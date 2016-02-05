@@ -15,11 +15,12 @@ struct PhysicsCatagory {
     static let dragon : UInt32 = 0x1 << 1
     static let Ground : UInt32 = 0x1 << 2
     static let Wall : UInt32 = 0x1 << 3
+    static let Score : UInt32 = 0x1 << 4
 }
 
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
   
     var ground:SKSpriteNode?
     var dragon: SKSpriteNode?
@@ -32,16 +33,47 @@ class GameScene: SKScene {
     var  moveAndRemove =  SKAction ()
     var gameStarted = Bool()
     
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        
-        
+    let scoreLabel = SKLabelNode()
+    var score = Int()
     
+    var dieState = Bool()
+    
+    var restartButton = SKSpriteNode()
+    
+    
+    func restartGame(){
+   
+        self.removeAllActions()
+        self.removeAllChildren()
+        dieState = false
+        gameStarted = false
+        score = 0
+        
+   
+        createScene()
+        
+    }
+    
+    func createScene (){
+        
+        //score label
+        scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 + self.frame.height / 2.5)
+        scoreLabel.text = "Score: \(score)"
+        scoreLabel.zPosition = 3
+        self.addChild(scoreLabel)
+        //--
+        
+        self.physicsWorld.contactDelegate = self
+        
+        //----
+        
         let bg = SKSpriteNode(imageNamed: "BG")
         bg.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         bg.setScale(0.5)
+        bg.zPosition = 0
+        
         self.addChild(bg)
-       
+        
         ground = SKSpriteNode(imageNamed: "Ground")
         ground?.setScale(0.5)
         ground?.position = CGPoint(x: self.frame.width/2, y: 0 + ground!.frame.height/2)
@@ -56,25 +88,25 @@ class GameScene: SKScene {
         ground?.zPosition = 3
         
         self.addChild(ground!)
-       
+        
         //load dragon sequence
         for i in 1...9 {
             
-        let imageName = "dragon\(i)"
-           
+            let imageName = "dragon\(i)"
+            
             imageArrayB += [SKTexture(imageNamed: imageName)]
-          animAction = SKAction.animateWithTextures(imageArrayB, timePerFrame: 0.1)
+            animAction = SKAction.animateWithTextures(imageArrayB, timePerFrame: 0.1)
             
         }
         
         
         dragon = SKSpriteNode(imageNamed:"dragon1")
-       
-       let action = SKAction.repeatActionForever(animAction)
+        
+        let action = SKAction.repeatActionForever(animAction)
         
         dragon?.runAction(action)
         
-       
+        
         dragon?.size = CGSize (width: 100, height: 100)
         dragon?.position = CGPoint(x: self.frame.width/2 , y: self.frame.height/2)
         
@@ -83,7 +115,7 @@ class GameScene: SKScene {
         
         dragon?.physicsBody?.categoryBitMask = PhysicsCatagory.dragon
         dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
-        dragon?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
+        dragon?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall | PhysicsCatagory.Score
         dragon?.physicsBody?.affectedByGravity = false
         dragon?.physicsBody?.allowsRotation = false
         dragon?.physicsBody?.dynamic = true
@@ -91,18 +123,67 @@ class GameScene: SKScene {
         dragon?.zPosition = 2
         self.addChild(dragon!)
         
-        
-        
-        
-        
-        
+
         
     }
     
     
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+        createScene()
+      
+    }
+    
+    func createButton (){
+        
+        restartButton = SKSpriteNode(color: SKColor.blueColor(), size: CGSizeMake(200, 100))
+        restartButton.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        
+        restartButton.zPosition = 4
+        self.addChild(restartButton)
+    }
+    func didBeginContact(contact: SKPhysicsContact) {
+        let contactBodyA = contact.bodyA
+        let contactBodyB = contact.bodyB
+        if contactBodyA.categoryBitMask == PhysicsCatagory.Score && contactBodyB.categoryBitMask == PhysicsCatagory.dragon || contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Score {
+            
+           score++
+            
+            print(score)
+               scoreLabel.text = "Score: \(score)"
+           
+            
+        }
+     
+        if contactBodyA.categoryBitMask == PhysicsCatagory.Wall && contactBodyB.categoryBitMask == PhysicsCatagory.dragon || contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Wall {
+    
+            dieState = true
+            print("touched")
+            createButton()
+            
+        }
+        
+    }
+    
     func createWall (){
         
+        //add score node
+        let scoreNode = SKSpriteNode()
+        scoreNode.size = CGSize(width: 1, height: 200)
+        scoreNode.position = CGPoint(x: self.frame.width, y: self.frame.height/2)
+        scoreNode.physicsBody = SKPhysicsBody(rectangleOfSize: scoreNode.size)
+        scoreNode.physicsBody?.affectedByGravity = false
+        scoreNode.physicsBody?.dynamic = false
+        scoreNode.physicsBody?.categoryBitMask = PhysicsCatagory.Score
+        scoreNode.physicsBody?.collisionBitMask = 0
+        scoreNode.physicsBody?.contactTestBitMask = PhysicsCatagory.dragon
+        scoreNode.color = SKColor.blueColor()
+        
+        
+        
+        //----
          wallPair = SKNode()
+        wallPair.addChild(scoreNode)
         
         let topWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
         topWall.setScale(0.5)
@@ -118,6 +199,7 @@ class GameScene: SKScene {
         topWall.physicsBody?.affectedByGravity = false
         topWall.physicsBody?.dynamic = false
 
+        
         wallPair.addChild(topWall)
         
         
@@ -142,7 +224,10 @@ class GameScene: SKScene {
         
         wallPair.position.y += randomPosition
         
+        
         wallPair.runAction(moveAndRemove)
+        
+        
         
         self.addChild(wallPair)
         
@@ -187,11 +272,31 @@ class GameScene: SKScene {
             
         }
         
+        if dieState == true {
         
+        }
+        else{
         
-        dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
-        dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
+            dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
+            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
+            
+        }
         
+        for touch in touches {
+            let touchLocation =  touch.locationInNode(self)
+            
+            if dieState == true{
+                
+                if restartButton.containsPoint(touchLocation){
+                    restartGame()
+                }
+                
+            }
+            
+           
+        }
+        
+  
     
     }
    
