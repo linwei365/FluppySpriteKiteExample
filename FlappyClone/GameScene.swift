@@ -36,6 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode()
     var score = Int()
     
+    var touchCount =  Int()
+    
     var dieState = Bool()
     
     var restartButton = SKSpriteNode()
@@ -48,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dieState = false
         gameStarted = false
         score = 0
-        
+        touchCount = 0
    
         createScene()
         
@@ -111,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dragon?.position = CGPoint(x: self.frame.width/2 , y: self.frame.height/2)
         
         //adding physicsBody to dragon
-        dragon?.physicsBody = SKPhysicsBody(circleOfRadius: ((dragon?.frame.height)!/3))
+        dragon?.physicsBody = SKPhysicsBody(circleOfRadius: ((dragon?.frame.height)!/4))
         
         dragon?.physicsBody?.categoryBitMask = PhysicsCatagory.dragon
         dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
@@ -136,11 +138,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createButton (){
         
-        restartButton = SKSpriteNode(color: SKColor.blueColor(), size: CGSizeMake(200, 100))
-        restartButton.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        restartButton = SKSpriteNode(imageNamed: "restart-button")
         
+        restartButton.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        restartButton.setScale(0)
         restartButton.zPosition = 4
         self.addChild(restartButton)
+        restartButton.runAction(SKAction.scaleTo(0.4, duration: 0.5))
+        
     }
     func didBeginContact(contact: SKPhysicsContact) {
         let contactBodyA = contact.bodyA
@@ -149,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
            score++
             
-            print(score)
+            
                scoreLabel.text = "Score: \(score)"
            
             
@@ -158,8 +163,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contactBodyA.categoryBitMask == PhysicsCatagory.Wall && contactBodyB.categoryBitMask == PhysicsCatagory.dragon || contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Wall {
     
             dieState = true
-            print("touched")
+            
+            
+            touchCount++
+            if touchCount == 1 {
+                print("touched")
+         
+//          dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground
             createButton()
+//
+                
+            }
+            print(touchCount)
+//            enumerateChildNodesWithName("wallPair", usingBlock: { (node, error ) -> Void in
+//                node.speed = 0
+//            })
+            
             
         }
         
@@ -184,6 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //----
          wallPair = SKNode()
         wallPair.addChild(scoreNode)
+        wallPair.name = "wallPair"
         
         let topWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
         topWall.setScale(0.5)
@@ -263,7 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
             dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
-            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
+            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 80))
 
             
         }
@@ -278,7 +298,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else{
         
             dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
-            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
+            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 50))
             
         }
         
@@ -286,6 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let touchLocation =  touch.locationInNode(self)
             
             if dieState == true{
+                
                 
                 if restartButton.containsPoint(touchLocation){
                     restartGame()
