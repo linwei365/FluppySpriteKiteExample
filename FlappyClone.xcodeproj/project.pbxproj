@@ -16,6 +16,7 @@
 		65BB35021C647CBE0014C0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BB35001C647CBE0014C0BA /* LaunchScreen.storyboard */; };
 		65BB350D1C647CBF0014C0BA /* FlappyCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB350C1C647CBF0014C0BA /* FlappyCloneTests.swift */; };
 		65BB35181C647CBF0014C0BA /* FlappyCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB35171C647CBF0014C0BA /* FlappyCloneUITests.swift */; };
+		65BB35281C64DDF80014C0BA /* RandomFunctionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB35271C64DDF80014C0BA /* RandomFunctionGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		65BB35131C647CBF0014C0BA /* FlappyCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB35171C647CBF0014C0BA /* FlappyCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyCloneUITests.swift; sourceTree = "<group>"; };
 		65BB35191C647CBF0014C0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65BB35271C64DDF80014C0BA /* RandomFunctionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomFunctionGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				65BB34F31C647CBE0014C0BA /* AppDelegate.swift */,
 				65BB34F51C647CBE0014C0BA /* GameScene.sks */,
+				65BB35271C64DDF80014C0BA /* RandomFunctionGenerator.swift */,
 				65BB34F71C647CBE0014C0BA /* GameScene.swift */,
 				65BB34F91C647CBE0014C0BA /* GameViewController.swift */,
 				65BB34FB1C647CBE0014C0BA /* Main.storyboard */,
@@ -265,6 +268,7 @@
 			files = (
 				65BB34F81C647CBE0014C0BA /* GameScene.swift in Sources */,
 				65BB34FA1C647CBE0014C0BA /* GameViewController.swift in Sources */,
+				65BB35281C64DDF80014C0BA /* RandomFunctionGenerator.swift in Sources */,
 				65BB34F41C647CBE0014C0BA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

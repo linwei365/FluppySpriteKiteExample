@@ -84,7 +84,7 @@ class GameScene: SKScene {
         dragon?.physicsBody?.categoryBitMask = PhysicsCatagory.dragon
         dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
         dragon?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
-        dragon?.physicsBody?.affectedByGravity = true
+        dragon?.physicsBody?.affectedByGravity = false
         dragon?.physicsBody?.allowsRotation = false
         dragon?.physicsBody?.dynamic = true
         
@@ -94,25 +94,6 @@ class GameScene: SKScene {
         
         
         
-        
-        //create wall
-        
-        let wallSpawn =  SKAction.runBlock { () -> Void in
-            self.createWall()
-        }
-        
-        let delay = SKAction.waitForDuration(2.0)
-        let wallSpawnDelay = SKAction.sequence([wallSpawn, delay])
-        let spawnActionForever = SKAction.repeatActionForever(wallSpawnDelay)
-        self.runAction(spawnActionForever)
-   
-      let distance = CGFloat(self.frame.width + wallPair.frame.width)
-        
-        let movePipes = SKAction.moveByX(-distance, y: 0, duration: NSTimeInterval(0.01 * distance))
-        let removePipes = SKAction.removeFromParent()
-        
-        moveAndRemove = SKAction.sequence([movePipes,removePipes])
-       
         
         
         
@@ -157,6 +138,10 @@ class GameScene: SKScene {
         
         wallPair.zPosition = 1
         
+        let randomPosition = CGFloat.random(-200, max: 200)
+        
+        wallPair.position.y += randomPosition
+        
         wallPair.runAction(moveAndRemove)
         
         self.addChild(wallPair)
@@ -168,6 +153,41 @@ class GameScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
 
+        if gameStarted == false {
+            
+            gameStarted = true
+            
+            dragon?.physicsBody?.affectedByGravity = true
+            //create wall
+            
+            let wallSpawn =  SKAction.runBlock { () -> Void in
+                self.createWall()
+            }
+            
+            let delay = SKAction.waitForDuration(2.0)
+            let wallSpawnDelay = SKAction.sequence([wallSpawn, delay])
+            let spawnActionForever = SKAction.repeatActionForever(wallSpawnDelay)
+            self.runAction(spawnActionForever)
+            
+            let distance = CGFloat(self.frame.width + wallPair.frame.width)
+            
+            let movePipes = SKAction.moveByX(-distance, y: 0, duration: NSTimeInterval(0.01 * distance))
+            let removePipes = SKAction.removeFromParent()
+            
+            moveAndRemove = SKAction.sequence([movePipes,removePipes])
+            
+            
+            dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
+            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
+
+            
+        }
+        else {
+            
+            
+        }
+        
+        
         
         dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
         dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 90))
