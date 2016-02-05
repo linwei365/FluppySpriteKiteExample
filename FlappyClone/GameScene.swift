@@ -24,13 +24,15 @@ class GameScene: SKScene {
     var ground:SKSpriteNode?
     var ghost: SKSpriteNode?
     
+ 
     
-    
+    var imageArrayB = [SKTexture]()
+    var animAction = SKAction()
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-           createWall()
         
+    
         
        
         ground = SKSpriteNode(imageNamed: "Ground")
@@ -48,11 +50,25 @@ class GameScene: SKScene {
         
         self.addChild(ground!)
         
+        for i in 1...9 {
+            
+            let imageName = "dragon\(i)"
+           
+            imageArrayB += [SKTexture(imageNamed: imageName)]
+          animAction = SKAction.animateWithTextures(imageArrayB, timePerFrame: 0.1)
+            
+        }
         
         
-        ghost = SKSpriteNode(imageNamed: "Ghost")
-        ghost?.size = CGSize (width: 60, height: 70)
-        ghost?.position = CGPoint(x: self.frame.width/2 - ghost!.frame.width, y: self.frame.height/2)
+        ghost = SKSpriteNode(imageNamed:"dragon1")
+       
+       let action = SKAction.repeatActionForever(animAction)
+        
+        ghost?.runAction(action)
+        
+       
+        ghost?.size = CGSize (width: 140, height: 120)
+        ghost?.position = CGPoint(x: self.frame.width/2 - ghost!.frame.width+30, y: self.frame.height/2)
         
         //adding physicsBody to ghost
         ghost?.physicsBody = SKPhysicsBody(circleOfRadius: ((ghost?.frame.height)!/2))
@@ -65,7 +81,12 @@ class GameScene: SKScene {
         ghost?.zPosition = 2
         self.addChild(ghost!)
         
-    
+        
+        //create wall
+        createWall()
+        
+        
+        
     }
     
     
@@ -115,9 +136,10 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
- 
+
+        
         ghost?.physicsBody?.velocity = CGVectorMake(0, 0)
-        ghost?.physicsBody?.applyImpulse(CGVectorMake(0, 80))
+        ghost?.physicsBody?.applyImpulse(CGVectorMake(0, 260))
         
     
     }
