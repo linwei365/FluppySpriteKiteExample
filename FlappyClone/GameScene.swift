@@ -33,7 +33,10 @@ class GameScene: SKScene {
         
         
     
-        
+        let bg = SKSpriteNode(imageNamed: "BG")
+        bg.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        bg.setScale(0.5)
+        self.addChild(bg)
        
         ground = SKSpriteNode(imageNamed: "Ground")
         ground?.setScale(0.5)
@@ -111,8 +114,7 @@ class GameScene: SKScene {
         wallPair.addChild(topWall)
         
         
-        
-        
+
         
         let buttomWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
         buttomWall.setScale(0.5)
