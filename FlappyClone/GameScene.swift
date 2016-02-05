@@ -44,6 +44,7 @@ class GameScene: SKScene {
         ground?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ghost
         ground?.physicsBody?.affectedByGravity = false
         ground?.physicsBody?.dynamic = false
+        ground?.zPosition = 3
         
         self.addChild(ground!)
         
@@ -61,7 +62,7 @@ class GameScene: SKScene {
         ghost?.physicsBody?.affectedByGravity = true
         ghost?.physicsBody?.dynamic = true
         
-        
+        ghost?.zPosition = 2
         self.addChild(ghost!)
         
     
@@ -74,7 +75,18 @@ class GameScene: SKScene {
         
         let topWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
         topWall.setScale(0.5)
-        topWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 380)
+        topWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 + 380)
+        //rotate the the topWall in z 180 degree radian
+        topWall.zRotation = CGFloat(M_PI)
+        
+        //adding physics to topWall
+        topWall.physicsBody = SKPhysicsBody(rectangleOfSize: topWall.size)
+        topWall.physicsBody?.categoryBitMask = PhysicsCatagory.Wall
+        topWall.physicsBody?.collisionBitMask = PhysicsCatagory.Ghost
+        topWall.physicsBody?.contactTestBitMask = PhysicsCatagory.Ghost
+        topWall.physicsBody?.affectedByGravity = false
+        topWall.physicsBody?.dynamic = false
+
         wallPair.addChild(topWall)
         
         
@@ -83,9 +95,18 @@ class GameScene: SKScene {
         
         let buttomWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
         buttomWall.setScale(0.5)
-        buttomWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 + 380)
+        buttomWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 380)
         wallPair.addChild(buttomWall)
         
+        //adding physics to buttomWall
+        buttomWall.physicsBody = SKPhysicsBody(rectangleOfSize: buttomWall.size)
+        buttomWall.physicsBody?.categoryBitMask = PhysicsCatagory.Wall
+        buttomWall.physicsBody?.collisionBitMask = PhysicsCatagory.Ghost
+        buttomWall.physicsBody?.contactTestBitMask = PhysicsCatagory.Ghost
+        buttomWall.physicsBody?.affectedByGravity = false
+        buttomWall.physicsBody?.dynamic = false
+        
+        wallPair.zPosition = 1
         self.addChild(wallPair)
         
     }
