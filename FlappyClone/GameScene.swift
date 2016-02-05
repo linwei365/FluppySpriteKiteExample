@@ -19,10 +19,41 @@ class GameScene: SKScene {
         /* Setup your scene here */
         
         ground = SKSpriteNode(imageNamed: "Ground")
+       
+        ground?.setScale(0.5)
+        ground?.position = CGPoint(x: self.frame.width/2, y: 0 + ground!.frame.height/2)
+        
+        self.addChild(ground!)
         
         
+      ghost = SKSpriteNode(imageNamed: "Ghost")
+        ghost?.size = CGSize (width: 60, height: 70)
         
-     
+        ghost?.position = CGPoint(x: self.frame.width/2 - ghost!.frame.width, y: self.frame.height/2)
+        
+        self.addChild(ghost!)
+        
+       createWall()
+    }
+    
+    
+    func createWall (){
+        
+        let wallPair:SKNode = SKNode()
+        
+        let topWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
+        topWall.setScale(0.5)
+        topWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        wallPair.addChild(topWall)
+        
+        
+        let buttomWall: SKSpriteNode = SKSpriteNode(imageNamed: "Wall")
+        buttomWall.setScale(0.5)
+        buttomWall.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        wallPair.addChild(buttomWall)
+        
+        self.addChild(wallPair)
+        
     }
     
     
