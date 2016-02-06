@@ -119,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall
         dragon?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Wall | PhysicsCatagory.Score
         dragon?.physicsBody?.affectedByGravity = false
-        dragon?.physicsBody?.allowsRotation = false
+//        dragon?.physicsBody?.allowsRotation = false
         dragon?.physicsBody?.dynamic = true
         
         dragon?.zPosition = 2
@@ -175,9 +175,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
             print(touchCount)
-//            enumerateChildNodesWithName("wallPair", usingBlock: { (node, error ) -> Void in
-//                node.speed = 0
-//            })
+            enumerateChildNodesWithName("wallPair", usingBlock: { (node, error ) -> Void in
+                node.speed = 0
+                self.removeAllActions()
+            })
             
             
         }
@@ -298,7 +299,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else{
         
             dragon?.physicsBody?.velocity = CGVectorMake(0, 0)
-            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 50))
+            dragon?.physicsBody?.applyImpulse(CGVectorMake(0, 44))
             
         }
         
