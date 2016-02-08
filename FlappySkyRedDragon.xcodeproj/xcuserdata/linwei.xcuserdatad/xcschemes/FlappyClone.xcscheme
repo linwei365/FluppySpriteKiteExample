@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65BB34EF1C647CBE0014C0BA"
-               BuildableName = "FlappyClone.app"
-               BlueprintName = "FlappyClone"
-               ReferencedContainer = "container:FlappyClone.xcodeproj">
+               BuildableName = "FlappySkyRedDragon.app"
+               BlueprintName = "FlappySkyRedDragon"
+               ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65BB35071C647CBF0014C0BA"
-               BuildableName = "FlappyCloneTests.xctest"
-               BlueprintName = "FlappyCloneTests"
-               ReferencedContainer = "container:FlappyClone.xcodeproj">
+               BuildableName = "FlappySkyRedDragon.xctest"
+               BlueprintName = "FlappySkyRedDragonTests"
+               ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65BB35121C647CBF0014C0BA"
-               BuildableName = "FlappyCloneUITests.xctest"
-               BlueprintName = "FlappyCloneUITests"
-               ReferencedContainer = "container:FlappyClone.xcodeproj">
+               BuildableName = "FlappySkyRedDragon.xctest"
+               BlueprintName = "FlappySkyRedDragonUITests"
+               ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65BB34EF1C647CBE0014C0BA"
-            BuildableName = "FlappyClone.app"
-            BlueprintName = "FlappyClone"
-            ReferencedContainer = "container:FlappyClone.xcodeproj">
+            BuildableName = "FlappySkyRedDragon.app"
+            BlueprintName = "FlappySkyRedDragon"
+            ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65BB34EF1C647CBE0014C0BA"
-            BuildableName = "FlappyClone.app"
-            BlueprintName = "FlappyClone"
-            ReferencedContainer = "container:FlappyClone.xcodeproj">
+            BuildableName = "FlappySkyRedDragon.app"
+            BlueprintName = "FlappySkyRedDragon"
+            ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65BB34EF1C647CBE0014C0BA"
-            BuildableName = "FlappyClone.app"
-            BlueprintName = "FlappyClone"
-            ReferencedContainer = "container:FlappyClone.xcodeproj">
+            BuildableName = "FlappySkyRedDragon.app"
+            BlueprintName = "FlappySkyRedDragon"
+            ReferencedContainer = "container:FlappySkyRedDragon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

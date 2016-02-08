@@ -17,6 +17,7 @@ struct PhysicsCatagory {
     static let Ground : UInt32 = 0x1 << 2
     static let Cloud : UInt32 = 0x1 << 3
     static let Score : UInt32 = 0x1 << 4
+    static let Coin: UInt32 = 0x1 << 5
 }
 
 
@@ -25,13 +26,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
     var ground:SKSpriteNode?
     var dragon: SKSpriteNode?
+    var coin:SKSpriteNode?
+    
     var CloudPair = SKNode()
  
     
     var imageName = String()
     var imageNameB = String ()
+   
+    
     
     var imageArrayB = [SKTexture]()
+    var dragonPhysicBodyArray = [SKPhysicsBody]()
+    var coinPhysicalBodyArray = [SKPhysicsBody]()
+    
+     var coinName = String()
+    var coinImageArray = [SKTexture]()
+    var coinAnimatedAction = SKAction()
+    
+    
     var animAction = SKAction()
     
     var  moveAndRemove =  SKAction ()
@@ -53,12 +66,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var windSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("WindSoundEffectLoop", ofType: "mp3")!)
     var flappingWingSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("FlappyingWings", ofType: "mp3")!)
     var dragonDyingSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("dragonDying", ofType: "mp3")!)
-
+  var coinSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("coinSound", ofType: "mp3")!)
     
     var audioPlayer = AVAudioPlayer()
     var aduioPlayerB = AVAudioPlayer()
     var audioPlayerC = AVAudioPlayer()
-  
+   var coinSoundPlayer = AVAudioPlayer()
     
     func restartGame(){
    
@@ -79,25 +92,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             imageName = "dragon\(i)"
             imageNameB = "dragonFlame\(i)"
+            coinName =  "goldCoin\(i)"
             
+            coinImageArray += [SKTexture(imageNamed: coinName)]
+            
+                imageArrayB += [SKTexture(imageNamed: imageName)]
+/*
             if touchGestureCount%4 == 1 {
                 imageArrayB += [SKTexture(imageNamed: imageNameB)]
             }
             else {
                 imageArrayB += [SKTexture(imageNamed: imageName)]
             }
+*/
             
             
             animAction = SKAction.animateWithTextures(imageArrayB, timePerFrame: 0.1)
+ 
+            coinAnimatedAction = SKAction.animateWithTextures(coinImageArray, timePerFrame: 0.1)
+            
+            
+            
             
             /* unused physicsBody on alpha Channel
-            dragonPhyscialbody =  SKPhysicsBody(texture: SKTexture(imageNamed: "dragon1"), alphaThreshold: 1, size: (dragon?.size)!)
+            dragonPhyscialbody =  SKPhysicsBody(texture: SKTexture(imageNamed: "imageName"), alphaThreshold: 1, size: (dragon?.size)!)
             */
         }
     }
     
+ 
+    
     func createScene (){
    
+   
+        
         //adding moving background
         
         for i in 0..<2{
@@ -122,19 +150,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             try        audioPlayer = AVAudioPlayer(contentsOfURL: windSound, fileTypeHint: nil)
             try aduioPlayerB =  AVAudioPlayer(contentsOfURL: flappingWingSound, fileTypeHint: nil)
             try audioPlayerC = AVAudioPlayer(contentsOfURL: dragonDyingSound, fileTypeHint: nil)
+            try coinSoundPlayer = AVAudioPlayer(contentsOfURL: coinSound, fileTypeHint: nil)
          }
         catch{
             
             print("audio error")
         }
 
+       
         audioPlayer.prepareToPlay()
          audioPlayer.numberOfLoops = -1
         audioPlayer.play()
-        
-       
-        
-        
+  
         
         //score label
         scoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 + self.frame.height / 2.5)
@@ -155,7 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(bg)
         
         ground = SKSpriteNode(imageNamed: "Ground")
-        ground?.setScale(0.6)
+        ground?.setScale(1)
         ground?.position = CGPoint(x: self.frame.width/2, y: 0 + ground!.frame.height/2)
         
         //adding dynamic
@@ -170,15 +197,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ground!)
         
  
+        
+        
+        
+       
+        
         //load image sequence
         loadDragonSequence()
         
         
         dragon = SKSpriteNode(imageNamed:"dragon1")
         
-        let action = SKAction.repeatActionForever(animAction)
+        let actionB = SKAction.repeatActionForever(animAction)
         
-        dragon?.runAction(action)
+        dragon?.runAction(actionB)
         
        
         dragon?.size = CGSize (width: 100, height: 100)
@@ -187,22 +219,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dragon?.position = CGPoint(x: self.frame.width/2 , y: self.frame.height/2)
         
         //adding physicsBody to dragon
-    /*
-        dragon?.physicsBody = dragonPhyscialbody
-    */
-       dragon?.physicsBody = SKPhysicsBody(circleOfRadius: ((dragon?.frame.height)!/4))
+    /* more accurate but slow
+        for i in 1...9 {
+            imageName =  "dragon\(i)"
+            
+            let physicBody =  SKPhysicsBody(texture: SKTexture(imageNamed: imageName), alphaThreshold: 0.5, size: (dragon!.size))
+            
+            
+            dragonPhysicBodyArray += [physicBody]
+     
+        }
+          dragon?.physicsBody = SKPhysicsBody(bodies: dragonPhysicBodyArray)
+*/
+        
+        
+     dragon?.physicsBody = SKPhysicsBody(circleOfRadius: ((dragon?.frame.height)!/4))
         
         dragon?.physicsBody?.categoryBitMask = PhysicsCatagory.dragon
         dragon?.physicsBody?.collisionBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Cloud
         dragon?.physicsBody?.contactTestBitMask = PhysicsCatagory.Ground | PhysicsCatagory.Cloud | PhysicsCatagory.Score
         dragon?.physicsBody?.affectedByGravity = false
-//        dragon?.physicsBody?.allowsRotation = false
+       
         dragon?.physicsBody?.dynamic = true
         
-        dragon?.zPosition = 2
+        dragon?.zPosition = 3
         self.addChild(dragon!)
         
-
+        
+        
         
     }
     
@@ -232,16 +276,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let contactBodyB = contact.bodyB
         
         
+        if contactBodyA.categoryBitMask == PhysicsCatagory.Coin && contactBodyB.categoryBitMask == PhysicsCatagory.dragon{
         
-        if contactBodyA.categoryBitMask == PhysicsCatagory.Score && contactBodyB.categoryBitMask == PhysicsCatagory.dragon || contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Score {
+            coinSoundPlayer.prepareToPlay()
+            coinSoundPlayer.play()
             
-           score++
+            score++
             
             
-               scoreLabel.text = "Score: \(score)"
-           
+            scoreLabel.text = "Score: \(score)"
+            
+        contactBodyA.node?.removeFromParent()
+        }
+        
+        else if contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Coin {
+          
+           coinSoundPlayer.prepareToPlay()
+            coinSoundPlayer.play()
+            score++
+            
+            
+            scoreLabel.text = "Score: \(score)"
+            contactBodyB.node?.removeFromParent()
+            
             
         }
+        
+        
+        
+//        
+//        if contactBodyA.categoryBitMask == PhysicsCatagory.Score && contactBodyB.categoryBitMask == PhysicsCatagory.dragon {
+//            coinSoundPlayer.prepareToPlay()
+//            coinSoundPlayer.play()
+//            
+//            score++
+//            
+//            
+//            scoreLabel.text = "Score: \(score)"
+//            
+//            contactBodyA.node?.removeFromParent()
+//        
+//        }
+//        
+//        
+//        else if contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Score {
+//            
+//            coinSoundPlayer.prepareToPlay()
+//            coinSoundPlayer.play()
+//            score++
+//            
+//            
+//            scoreLabel.text = "Score: \(score)"
+//            contactBodyB.node?.removeFromParent()
+//            
+//            
+//        }
      
         if contactBodyA.categoryBitMask == PhysicsCatagory.Cloud && contactBodyB.categoryBitMask == PhysicsCatagory.dragon || contactBodyA.categoryBitMask == PhysicsCatagory.dragon && contactBodyB.categoryBitMask == PhysicsCatagory.Cloud {
     
@@ -274,9 +363,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createCloud (){
         
+        
+        //add coin
+        
+        
+        //added coin node
+        
+         coin = SKSpriteNode(imageNamed: "goldCoin1")
+        
+        coin?.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2)
+        coin?.setScale(0.5)
+        
+        let action = SKAction.repeatActionForever(coinAnimatedAction)
+        coin?.runAction(action)
+        coin?.zPosition = 1
+       
+        
+        //add coin physics
+        
+//        for i in 1...9 {
+//            coinName =  "goldCoin\(i)"
+//            
+//            let physicBody =  SKPhysicsBody(texture: SKTexture(imageNamed: coinName), alphaThreshold: 0.5, size: (coin!.size))
+//            
+//            
+//            coinPhysicalBodyArray += [physicBody]
+//            
+//           coin?.physicsBody = SKPhysicsBody(bodies: coinPhysicalBodyArray)
+//            
+//            
+//        }
+        
+        coin?.physicsBody = SKPhysicsBody (circleOfRadius: (coin?.frame.height)!/4)
+        coin?.physicsBody?.affectedByGravity = false
+        coin?.physicsBody?.dynamic = true
+        coin?.physicsBody?.categoryBitMask = PhysicsCatagory.Coin
+        coin?.physicsBody?.collisionBitMask = 0
+        coin?.physicsBody?.contactTestBitMask = PhysicsCatagory.dragon
+        
         //add score node
         let scoreNode = SKSpriteNode()
-        scoreNode.size = CGSize(width: 1, height: 220)
+        scoreNode.size = CGSize(width: 1, height: 200)
         scoreNode.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2)
         
         scoreNode.physicsBody = SKPhysicsBody(rectangleOfSize: scoreNode.size)
@@ -291,13 +418,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //----
          CloudPair = SKNode()
+        
+ 
+        CloudPair.addChild(coin!)
         CloudPair.addChild(scoreNode)
         CloudPair.name = "CloudPair"
         
         
         let topCloud: SKSpriteNode = SKSpriteNode(imageNamed: "Cloud")
         topCloud.setScale(0.5)
-        topCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 + 360)
+        topCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 + 350)
         //rotate the the topCloud in z 180 degree radian
         topCloud.zRotation = CGFloat(M_PI)
         
@@ -319,7 +449,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let buttomCloud: SKSpriteNode = SKSpriteNode(imageNamed: "Cloud")
         buttomCloud.setScale(0.5)
-        buttomCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 - 360)
+        buttomCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 - 350)
         CloudPair.addChild(buttomCloud)
         
         //adding physics to buttomCloud
@@ -375,7 +505,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let distance = CGFloat(self.frame.width + CloudPair.frame.width )
            
             //added offset -100 to make exit cloud poping disappear
-            let movePipes = SKAction.moveByX(-distance - 100 , y: 0, duration: NSTimeInterval(0.008 * distance))
+            let movePipes = SKAction.moveByX(-distance - 100 , y: 0, duration: NSTimeInterval(0.01 * distance))
             let removePipes = SKAction.removeFromParent()
             
             moveAndRemove = SKAction.sequence([movePipes,removePipes])

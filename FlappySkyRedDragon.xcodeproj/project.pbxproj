@@ -10,6 +10,8 @@
 		6532E05A1C6886E000AD05B3 /* WindSoundEffectLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */; };
 		6532E05E1C688DCD00AD05B3 /* FlappyingWings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */; };
 		6532E0601C68A1DF00AD05B3 /* dragonDying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */; };
+		6532E0621C68C21000AD05B3 /* flameBreathShort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E0611C68C21000AD05B3 /* flameBreathShort.mp3 */; };
+		6594EAF71C68EDC100AF138F /* coinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6594EAF61C68EDC100AF138F /* coinSound.mp3 */; };
 		65BB34F41C647CBE0014C0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB34F31C647CBE0014C0BA /* AppDelegate.swift */; };
 		65BB34F61C647CBE0014C0BA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65BB34F51C647CBE0014C0BA /* GameScene.sks */; };
 		65BB34F81C647CBE0014C0BA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB34F71C647CBE0014C0BA /* GameScene.swift */; };
@@ -43,7 +45,9 @@
 		6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WindSoundEffectLoop.mp3; sourceTree = "<group>"; };
 		6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FlappyingWings.mp3; sourceTree = "<group>"; };
 		6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragonDying.mp3; sourceTree = "<group>"; };
-		65BB34F01C647CBE0014C0BA /* FlappyClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6532E0611C68C21000AD05B3 /* flameBreathShort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flameBreathShort.mp3; sourceTree = "<group>"; };
+		6594EAF61C68EDC100AF138F /* coinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinSound.mp3; sourceTree = "<group>"; };
+		65BB34F01C647CBE0014C0BA /* FlappySkyRedDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappySkyRedDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB34F31C647CBE0014C0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65BB34F51C647CBE0014C0BA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		65BB34F71C647CBE0014C0BA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -52,10 +56,10 @@
 		65BB34FE1C647CBE0014C0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65BB35011C647CBE0014C0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65BB35031C647CBE0014C0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65BB35081C647CBF0014C0BA /* FlappyCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BB35081C647CBF0014C0BA /* FlappySkyRedDragon.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappySkyRedDragon.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB350C1C647CBF0014C0BA /* FlappyCloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyCloneTests.swift; sourceTree = "<group>"; };
 		65BB350E1C647CBF0014C0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65BB35131C647CBF0014C0BA /* FlappyCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BB35131C647CBF0014C0BA /* FlappySkyRedDragon.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappySkyRedDragon.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB35171C647CBF0014C0BA /* FlappyCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyCloneUITests.swift; sourceTree = "<group>"; };
 		65BB35191C647CBF0014C0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65BB35271C64DDF80014C0BA /* RandomFunctionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomFunctionGenerator.swift; sourceTree = "<group>"; };
@@ -86,6 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6532E0631C68C21900AD05B3 /* soundFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6594EAF61C68EDC100AF138F /* coinSound.mp3 */,
+				6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */,
+				6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */,
+				6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */,
+				6532E0611C68C21000AD05B3 /* flameBreathShort.mp3 */,
+			);
+			name = soundFiles;
+			sourceTree = "<group>";
+		};
 		65BB34E71C647CBE0014C0BA = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +115,9 @@
 		65BB34F11C647CBE0014C0BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65BB34F01C647CBE0014C0BA /* FlappyClone.app */,
-				65BB35081C647CBF0014C0BA /* FlappyCloneTests.xctest */,
-				65BB35131C647CBF0014C0BA /* FlappyCloneUITests.xctest */,
+				65BB34F01C647CBE0014C0BA /* FlappySkyRedDragon.app */,
+				65BB35081C647CBF0014C0BA /* FlappySkyRedDragon.xctest */,
+				65BB35131C647CBF0014C0BA /* FlappySkyRedDragon.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,10 +132,8 @@
 				65BB34F91C647CBE0014C0BA /* GameViewController.swift */,
 				65BB34FB1C647CBE0014C0BA /* Main.storyboard */,
 				65BB34FE1C647CBE0014C0BA /* Assets.xcassets */,
-				6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */,
 				65BB35001C647CBE0014C0BA /* LaunchScreen.storyboard */,
-				6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */,
-				6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */,
+				6532E0631C68C21900AD05B3 /* soundFiles */,
 				65BB35031C647CBE0014C0BA /* Info.plist */,
 			);
 			path = FlappyClone;
@@ -146,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65BB34EF1C647CBE0014C0BA /* FlappyClone */ = {
+		65BB34EF1C647CBE0014C0BA /* FlappySkyRedDragon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65BB351C1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyClone" */;
+			buildConfigurationList = 65BB351C1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragon" */;
 			buildPhases = (
 				65BB34EC1C647CBE0014C0BA /* Sources */,
 				65BB34ED1C647CBE0014C0BA /* Frameworks */,
@@ -158,14 +172,14 @@
 			);
 			dependencies = (
 			);
-			name = FlappyClone;
+			name = FlappySkyRedDragon;
 			productName = FlappyClone;
-			productReference = 65BB34F01C647CBE0014C0BA /* FlappyClone.app */;
+			productReference = 65BB34F01C647CBE0014C0BA /* FlappySkyRedDragon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		65BB35071C647CBF0014C0BA /* FlappyCloneTests */ = {
+		65BB35071C647CBF0014C0BA /* FlappySkyRedDragonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65BB351F1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneTests" */;
+			buildConfigurationList = 65BB351F1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragonTests" */;
 			buildPhases = (
 				65BB35041C647CBF0014C0BA /* Sources */,
 				65BB35051C647CBF0014C0BA /* Frameworks */,
@@ -176,14 +190,14 @@
 			dependencies = (
 				65BB350A1C647CBF0014C0BA /* PBXTargetDependency */,
 			);
-			name = FlappyCloneTests;
+			name = FlappySkyRedDragonTests;
 			productName = FlappyCloneTests;
-			productReference = 65BB35081C647CBF0014C0BA /* FlappyCloneTests.xctest */;
+			productReference = 65BB35081C647CBF0014C0BA /* FlappySkyRedDragon.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		65BB35121C647CBF0014C0BA /* FlappyCloneUITests */ = {
+		65BB35121C647CBF0014C0BA /* FlappySkyRedDragonUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65BB35221C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneUITests" */;
+			buildConfigurationList = 65BB35221C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragonUITests" */;
 			buildPhases = (
 				65BB350F1C647CBF0014C0BA /* Sources */,
 				65BB35101C647CBF0014C0BA /* Frameworks */,
@@ -194,9 +208,9 @@
 			dependencies = (
 				65BB35151C647CBF0014C0BA /* PBXTargetDependency */,
 			);
-			name = FlappyCloneUITests;
+			name = FlappySkyRedDragonUITests;
 			productName = FlappyCloneUITests;
-			productReference = 65BB35131C647CBF0014C0BA /* FlappyCloneUITests.xctest */;
+			productReference = 65BB35131C647CBF0014C0BA /* FlappySkyRedDragon.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 65BB34EB1C647CBE0014C0BA /* Build configuration list for PBXProject "FlappyClone" */;
+			buildConfigurationList = 65BB34EB1C647CBE0014C0BA /* Build configuration list for PBXProject "FlappySkyRedDragon" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -235,9 +249,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65BB34EF1C647CBE0014C0BA /* FlappyClone */,
-				65BB35071C647CBF0014C0BA /* FlappyCloneTests */,
-				65BB35121C647CBF0014C0BA /* FlappyCloneUITests */,
+				65BB34EF1C647CBE0014C0BA /* FlappySkyRedDragon */,
+				65BB35071C647CBF0014C0BA /* FlappySkyRedDragonTests */,
+				65BB35121C647CBF0014C0BA /* FlappySkyRedDragonUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +266,8 @@
 				6532E0601C68A1DF00AD05B3 /* dragonDying.mp3 in Resources */,
 				65BB34FF1C647CBE0014C0BA /* Assets.xcassets in Resources */,
 				65BB34FD1C647CBE0014C0BA /* Main.storyboard in Resources */,
+				6532E0621C68C21000AD05B3 /* flameBreathShort.mp3 in Resources */,
+				6594EAF71C68EDC100AF138F /* coinSound.mp3 in Resources */,
 				6532E05E1C688DCD00AD05B3 /* FlappyingWings.mp3 in Resources */,
 				6532E05A1C6886E000AD05B3 /* WindSoundEffectLoop.mp3 in Resources */,
 			);
@@ -306,12 +322,12 @@
 /* Begin PBXTargetDependency section */
 		65BB350A1C647CBF0014C0BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 65BB34EF1C647CBE0014C0BA /* FlappyClone */;
+			target = 65BB34EF1C647CBE0014C0BA /* FlappySkyRedDragon */;
 			targetProxy = 65BB35091C647CBF0014C0BA /* PBXContainerItemProxy */;
 		};
 		65BB35151C647CBF0014C0BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 65BB34EF1C647CBE0014C0BA /* FlappyClone */;
+			target = 65BB34EF1C647CBE0014C0BA /* FlappySkyRedDragon */;
 			targetProxy = 65BB35141C647CBF0014C0BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -426,7 +442,7 @@
 				INFOPLIST_FILE = FlappyClone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyClone;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappySkyRedDragon;
 			};
 			name = Debug;
 		};
@@ -437,7 +453,7 @@
 				INFOPLIST_FILE = FlappyClone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyClone;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappySkyRedDragon;
 			};
 			name = Release;
 		};
@@ -449,8 +465,8 @@
 				INFOPLIST_FILE = FlappyCloneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyCloneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyClone.app/FlappyClone";
+				PRODUCT_NAME = FlappySkyRedDragon;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappySkyRedDragon.app/FlappySkyRedDragon";
 			};
 			name = Debug;
 		};
@@ -461,8 +477,8 @@
 				INFOPLIST_FILE = FlappyCloneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyCloneTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyClone.app/FlappyClone";
+				PRODUCT_NAME = FlappySkyRedDragon;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappySkyRedDragon.app/FlappySkyRedDragon";
 			};
 			name = Release;
 		};
@@ -473,7 +489,7 @@
 				INFOPLIST_FILE = FlappyCloneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyCloneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappySkyRedDragon;
 				TEST_TARGET_NAME = FlappyClone;
 				USES_XCTRUNNER = YES;
 			};
@@ -485,7 +501,7 @@
 				INFOPLIST_FILE = FlappyCloneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = company.FlappyCloneUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FlappySkyRedDragon;
 				TEST_TARGET_NAME = FlappyClone;
 				USES_XCTRUNNER = YES;
 			};
@@ -494,7 +510,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65BB34EB1C647CBE0014C0BA /* Build configuration list for PBXProject "FlappyClone" */ = {
+		65BB34EB1C647CBE0014C0BA /* Build configuration list for PBXProject "FlappySkyRedDragon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65BB351A1C647CBF0014C0BA /* Debug */,
@@ -503,7 +519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65BB351C1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyClone" */ = {
+		65BB351C1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65BB351D1C647CBF0014C0BA /* Debug */,
@@ -512,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65BB351F1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneTests" */ = {
+		65BB351F1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65BB35201C647CBF0014C0BA /* Debug */,
@@ -521,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65BB35221C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneUITests" */ = {
+		65BB35221C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappySkyRedDragonUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65BB35231C647CBF0014C0BA /* Debug */,
