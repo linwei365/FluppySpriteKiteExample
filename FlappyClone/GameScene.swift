@@ -97,6 +97,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createScene (){
+   
+        //adding moving background
+        
+        for i in 0..<2{
+            
+            let movingCloud = SKSpriteNode(imageNamed: "Ground")
+            movingCloud.anchorPoint = CGPointZero
+            //offset 2nd SpriteNode by a frame width
+            movingCloud.position = CGPointMake(CGFloat(i) * self.frame.width, 0)
+            
+            movingCloud.name = "movingCloud"
+//            movingCloud.size = (self.view?.bounds.size)!
+//            movingCloud.setScale(0.5)
+            
+            movingCloud.zPosition = 4
+            self.addChild(movingCloud)
+            
+        }
         
    
        // audio player
@@ -131,13 +149,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let bg = SKSpriteNode(imageNamed: "BG")
         bg.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-        bg.setScale(0.5)
+        bg.setScale(0.7)
         bg.zPosition = 0
         
         self.addChild(bg)
         
         ground = SKSpriteNode(imageNamed: "Ground")
-        ground?.setScale(0.5)
+        ground?.setScale(0.6)
         ground?.position = CGPoint(x: self.frame.width/2, y: 0 + ground!.frame.height/2)
         
         //adding dynamic
@@ -243,6 +261,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
             print(touchCount)
+            //enumerate through the child name "CloudPair" pass into the node 
             enumerateChildNodesWithName("CloudPair", usingBlock: { (node, error ) -> Void in
                 node.speed = 0
                 self.removeAllActions()
@@ -258,7 +277,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //add score node
         let scoreNode = SKSpriteNode()
         scoreNode.size = CGSize(width: 1, height: 220)
-        scoreNode.position = CGPoint(x: self.frame.width, y: self.frame.height/2)
+        scoreNode.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2)
         
         scoreNode.physicsBody = SKPhysicsBody(rectangleOfSize: scoreNode.size)
         scoreNode.physicsBody?.affectedByGravity = false
@@ -278,7 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let topCloud: SKSpriteNode = SKSpriteNode(imageNamed: "Cloud")
         topCloud.setScale(0.5)
-        topCloud.position = CGPoint(x: self.frame.width, y: self.frame.height/2 + 360)
+        topCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 + 360)
         //rotate the the topCloud in z 180 degree radian
         topCloud.zRotation = CGFloat(M_PI)
         
@@ -300,7 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let buttomCloud: SKSpriteNode = SKSpriteNode(imageNamed: "Cloud")
         buttomCloud.setScale(0.5)
-        buttomCloud.position = CGPoint(x: self.frame.width, y: self.frame.height/2 - 360)
+        buttomCloud.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2 - 360)
         CloudPair.addChild(buttomCloud)
         
         //adding physics to buttomCloud
@@ -355,8 +374,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let distance = CGFloat(self.frame.width + CloudPair.frame.width )
            
-            
-            let movePipes = SKAction.moveByX(-distance, y: 0, duration: NSTimeInterval(0.01 * distance))
+            //added offset -100 to make exit cloud poping disappear
+            let movePipes = SKAction.moveByX(-distance - 100 , y: 0, duration: NSTimeInterval(0.008 * distance))
             let removePipes = SKAction.removeFromParent()
             
             moveAndRemove = SKAction.sequence([movePipes,removePipes])
@@ -403,5 +422,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if gameStarted == true {
+            if dieState == false {
+            enumerateChildNodesWithName("movingCloud", usingBlock: { (node, error) -> Void in
+                let bg = node as! SKSpriteNode
+                bg.position = CGPoint(x: bg.position.x - 3, y: bg.position.y
+                )
+                
+                //loop movingCloud
+                if bg.position.x <= -bg.size.width {
+                    // by moving back to its origin x position  
+//                    bg.position = CGPoint(x: bg.position.x + bg.position.x * 2 , y: bg.position.y)
+                    bg.position = CGPointMake(bg.position.x + bg.size.width * 2-720, bg.position.y)
+                }
+                
+
+            })
+            
+            
+            }
+            
+        }
+        
     }
 }
