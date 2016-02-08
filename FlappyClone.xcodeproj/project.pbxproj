@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6532E05A1C6886E000AD05B3 /* WindSoundEffectLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */; };
+		6532E05E1C688DCD00AD05B3 /* FlappyingWings.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */; };
+		6532E0601C68A1DF00AD05B3 /* dragonDying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */; };
 		65BB34F41C647CBE0014C0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB34F31C647CBE0014C0BA /* AppDelegate.swift */; };
 		65BB34F61C647CBE0014C0BA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65BB34F51C647CBE0014C0BA /* GameScene.sks */; };
 		65BB34F81C647CBE0014C0BA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BB34F71C647CBE0014C0BA /* GameScene.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WindSoundEffectLoop.mp3; sourceTree = "<group>"; };
+		6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FlappyingWings.mp3; sourceTree = "<group>"; };
+		6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragonDying.mp3; sourceTree = "<group>"; };
 		65BB34F01C647CBE0014C0BA /* FlappyClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BB34F31C647CBE0014C0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65BB34F51C647CBE0014C0BA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -110,7 +116,10 @@
 				65BB34F91C647CBE0014C0BA /* GameViewController.swift */,
 				65BB34FB1C647CBE0014C0BA /* Main.storyboard */,
 				65BB34FE1C647CBE0014C0BA /* Assets.xcassets */,
+				6532E05F1C68A1DF00AD05B3 /* dragonDying.mp3 */,
 				65BB35001C647CBE0014C0BA /* LaunchScreen.storyboard */,
+				6532E05D1C688DCD00AD05B3 /* FlappyingWings.mp3 */,
+				6532E0581C6886E000AD05B3 /* WindSoundEffectLoop.mp3 */,
 				65BB35031C647CBE0014C0BA /* Info.plist */,
 			);
 			path = FlappyClone;
@@ -240,8 +249,11 @@
 			files = (
 				65BB34F61C647CBE0014C0BA /* GameScene.sks in Resources */,
 				65BB35021C647CBE0014C0BA /* LaunchScreen.storyboard in Resources */,
+				6532E0601C68A1DF00AD05B3 /* dragonDying.mp3 in Resources */,
 				65BB34FF1C647CBE0014C0BA /* Assets.xcassets in Resources */,
 				65BB34FD1C647CBE0014C0BA /* Main.storyboard in Resources */,
+				6532E05E1C688DCD00AD05B3 /* FlappyingWings.mp3 in Resources */,
+				6532E05A1C6886E000AD05B3 /* WindSoundEffectLoop.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +510,7 @@
 				65BB351E1C647CBF0014C0BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65BB351F1C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +519,7 @@
 				65BB35211C647CBF0014C0BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65BB35221C647CBF0014C0BA /* Build configuration list for PBXNativeTarget "FlappyCloneUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +528,7 @@
 				65BB35241C647CBF0014C0BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
